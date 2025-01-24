@@ -5,9 +5,9 @@ HOMEPAGE = "https://pythran.readthedocs.io/"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e277a0b6033e0cb3d510c86b74144b01"
 
-SRC_URI[sha256sum] = "42f3473946205964844eff7f750e2541afb2006d53475d708f5ff2d048db89bd"
+SRC_URI[sha256sum] = "f9bc61bcb96df2cd4b578abc5a62dfb3fbb0b0ef02c264513dfb615c5f87871c"
 
-DEPENDS = "python3-gast"
-RDEPENDS_${PN} = "python3-beniget python3-gast"
+DEPENDS += "python3-gast"
+RDEPENDS:${PN} += "python3-beniget python3-gast"
 
 BBCLASSEXTEND = "native"

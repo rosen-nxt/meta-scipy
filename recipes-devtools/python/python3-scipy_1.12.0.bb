@@ -1,30 +1,28 @@
 SUMMARY = "SciPy: Scientific Library for Python"
 HOMEPAGE = "https://www.scipy.org"
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3387f60dd97ca5d8ea2a907e50aec3a0"
+LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=5f477c3073ea2d02a70a764319f5f873"
 
 inherit pkgconfig pypi python_mesonpy
 
-SRC_URI[sha256sum] = "bba4d955f54edd61899776bad459bf7326e14b9fa1c552181f0479cc60a568cd"
-
-SRC_URI += "file://scipy-1.11.3-fix-with-Yocto.patch"
+SRC_URI[sha256sum] = "4bf5abab8a36d20193c698b0f1fc282c1d083c94723902c447e5d2f1780936a3"
 
 DEPENDS += " \
-	${PYTHON_PN}-numpy-native \
-	${PYTHON_PN}-pybind11-native \
-	${PYTHON_PN}-pythran-native \
-	${PYTHON_PN}-gast-native \
-	${PYTHON_PN}-beniget-native \
-	${PYTHON_PN}-ply-native \
+	python3-numpy-native \
+	python3-pybind11-native \
+	python3-pythran-native \
+	python3-gast-native \
+	python3-beniget-native \
+	python3-ply-native \
 	lapack \
 "
 
 DEPENDS:append:class-target = " \
-	${PYTHON_PN}-numpy \
+	python3-numpy \
 "
 
 RDEPENDS:${PN} += " \
-	${PYTHON_PN}-numpy \
+	python3-numpy \
 "
 
 PACKAGECONFIG ?= "lapack"
