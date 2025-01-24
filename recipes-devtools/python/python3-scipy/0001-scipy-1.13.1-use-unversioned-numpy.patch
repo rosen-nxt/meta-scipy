@@ -1,0 +1,22 @@
+From 5c79113829ae7ec6ff2e149fc2380c1c5418ce18 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Oliver=20K=C3=A4stner?= <okaestner@rosen-nxt.com>
+Date: Fri, 24 Jan 2025 15:33:27 +0000
+Subject: [PATCH] python3-scipy: use unversioned numpy
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 4de7393..78c1e6d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,7 +35,7 @@ requires = [
+     #      and disabling build isolation.
+     #   3. The <2.3 upper bound is for matching the numpy deprecation policy,
+     #      it should not be loosened.
+-    "numpy>=2.0.0rc1,<2.3",
++    "numpy",
+ ]
+ 
+ [project]

@@ -5,7 +5,8 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=5f477c3073ea2d02a70a764319f5f873"
 
 inherit pkgconfig pypi python_mesonpy
 
-SRC_URI[sha256sum] = "4bf5abab8a36d20193c698b0f1fc282c1d083c94723902c447e5d2f1780936a3"
+SRC_URI += "file://0001-scipy-1.13.1-use-unversioned-numpy.patch"
+SRC_URI[sha256sum] = "095a87a0312b08dfd6a6155cbbd310a8c51800fc931b8c0b84003014b874ed3c"
 
 DEPENDS += " \
 	python3-numpy-native \
@@ -14,7 +15,6 @@ DEPENDS += " \
 	python3-gast-native \
 	python3-beniget-native \
 	python3-ply-native \
-	lapack \
 "
 
 DEPENDS:append:class-target = " \
