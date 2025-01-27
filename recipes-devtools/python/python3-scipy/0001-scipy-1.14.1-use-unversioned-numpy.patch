@@ -1,0 +1,23 @@
+From c9a57d3aa6264c8a4055f8680c6dbe84d7d99c96 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Oliver=20K=C3=A4stner?= <okaestner@rosen-nxt.com>
+Date: Mon, 27 Jan 2025 10:44:01 +0000
+Subject: [PATCH] scipy 1.14.1: use unversioned numpy
+
+---
+ pyproject.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index a185fb3..b505810 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,8 +35,7 @@ requires = [
+     # Note that building against numpy 1.x works fine too - users and
+     # redistributors can do this by installing the numpy version they like and
+     # disabling build isolation.
+-    "numpy>=2.0.0rc1,<2.3",
+-    "numpy>=2.1.0rc1; python_version>='3.13'",
++    "numpy",
+ ]
+ 
+ [project]
