@@ -12,8 +12,6 @@ DEPENDS += " \
 	python3-numpy-native \
 	python3-pybind11-native \
 	python3-pythran-native \
-	python3-gast-native \
-	python3-beniget-native \
 	python3-ply-native \
 "
 
