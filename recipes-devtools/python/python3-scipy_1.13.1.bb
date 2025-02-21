@@ -9,6 +9,7 @@ SRC_URI += "file://0001-scipy-1.13.1-use-unversioned-numpy.patch"
 SRC_URI[sha256sum] = "095a87a0312b08dfd6a6155cbbd310a8c51800fc931b8c0b84003014b874ed3c"
 
 DEPENDS += " \
+	libgfortran \
 	python3-numpy-native \
 	python3-pybind11-native \
 	python3-pythran-native \
@@ -23,16 +24,16 @@ RDEPENDS:${PN} += " \
 	python3-numpy \
 "
 
-PACKAGECONFIG ?= "lapack"
+PACKAGECONFIG ?= "openblas"
 
-PACKAGECONFIG[openblas] = "-Dblas=openblas -Dlapack=openblas,,openblas,openblas"
-PACKAGECONFIG[lapack] = "-Dblas=lapack -Dlapack=lapack,,lapack,lapack"
+PACKAGECONFIG[openblas] = "-Dblas=openblas -Dlapack=openblas,,openblas,openblas,,lapack"
+PACKAGECONFIG[lapack] = "-Dblas=lapack -Dlapack=lapack,,lapack,lapack,,openblas"
 PACKAGECONFIG[f77] = "-Duse-g77-abi=true,,,"
 
 CLEANBROKEN = "1"
 
-export LAPACK = "${STAGING_LIBDIR}"
-export BLAS = "${STAGING_LIBDIR}"
+# removes compile warnings about unsupported flags when using poky
+FC:remove = "${SECURITY_STRINGFORMAT}"
 
 F90:class-native = "${FC}"
 F90:class-target = "${TARGET_PREFIX}gfortran"
