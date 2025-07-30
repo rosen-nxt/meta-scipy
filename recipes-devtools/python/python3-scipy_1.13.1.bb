@@ -18,6 +18,7 @@ DEPENDS += " \
 
 DEPENDS:append:class-target = " \
 	python3-numpy \
+	python3-pybind11 \
 "
 
 RDEPENDS:${PN} += " \
