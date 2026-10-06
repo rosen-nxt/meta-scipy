@@ -19,6 +19,7 @@ DEPENDS += " \
 DEPENDS:append:class-target = " \
 	python3-numpy \
 	python3-pybind11 \
+	python3-pythran \
 "
 
 RDEPENDS:${PN} += " \
@@ -32,6 +33,21 @@ PACKAGECONFIG[lapack] = "-Dblas=lapack -Dlapack=lapack,,lapack,lapack,,openblas"
 PACKAGECONFIG[f77] = "-Duse-g77-abi=true,,,"
 
 CLEANBROKEN = "1"
+
+do_write_config:append:class-target() {
+	# numpy and pythran static libs must fetched from target sysroot site-packages, not sysroot-native
+	# https://docs.scipy.org/doc/scipy-1.13.1/building/cross_compilation.html
+	cat >${WORKDIR}/meson-${PN}.cross <<EOF
+[constants]
+sitepkg = '${STAGING_DIR_HOST}${PYTHON_SITEPACKAGES_DIR}/'
+
+[properties]
+numpy-include-dir = sitepkg + 'numpy/core/include'
+pythran-include-dir = sitepkg + 'pythran'
+EOF
+}
+
+MESON_CROSS_FILE:append:class-target = " --cross-file ${WORKDIR}/meson-${PN}.cross"
 
 # removes compile warnings about unsupported flags when using poky
 FC:remove = "${SECURITY_STRINGFORMAT}"
