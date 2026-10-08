@@ -52,4 +52,7 @@ do_install() {
 FILES:${PN}     = "${libdir}/*"
 FILES:${PN}-dev = "${includedir} ${libdir}/lib${PN}.so ${libdir}/pkgconfig ${libdir}/cmake"
 
+# removes compile warnings about unsupported -W flags when using poky
+FC:remove = "${SECURITY_STRINGFORMAT}"
+
 BBCLASSEXTEND = "nativesdk"
